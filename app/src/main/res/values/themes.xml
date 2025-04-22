@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Theme.MASCOTAS_REGISTRO_PARA_GENERAR_CARNET" parent="android:Theme.Material.Light.NoActionBar" />
+</resources>
