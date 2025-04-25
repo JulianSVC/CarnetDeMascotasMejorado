@@ -112,20 +112,6 @@ fun ScreenA(navController: NavController) {
             Text("Generar Carnet", color = Color.White, fontSize = 18.sp)
         }
 
-        Spacer(modifier = Modifier.height(16.dp))
 
-        Button(
-            onClick = {
-                navController.navigate("screen_b")
-            },
-            modifier = Modifier
-                .width(220.dp)
-                .height(55.dp),
-            colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF03DAC5)),
-            shape = RoundedCornerShape(16.dp),
-            elevation = ButtonDefaults.buttonElevation(8.dp)
-        ) {
-            Text("Ver listas", color = Color.White, fontSize = 18.sp)
-        }
     }
 }
