@@ -3,7 +3,6 @@ package com.example.navegacion.viewmodel
 import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
-import androidx.lifecycle.viewmodel.compose.viewModel
 
 // Cambiar el tipo de registro para mascotas
 class RegistroViewModel : ViewModel() {
@@ -25,5 +24,17 @@ class RegistroViewModel : ViewModel() {
     fun eliminarRegistro(mascota: Triple<String, String, String>) {
         // Eliminamos el registro de la lista
         _registros.value = _registros.value.toMutableList().apply { remove(mascota) }
+    }
+
+    // Función para editar una mascota
+    fun editarRegistro(mascotaAntigua: Triple<String, String, String>, nuevoNombre: String, nuevaRaza: String, nuevaEdad: String) {
+        // Actualizamos el registro en la lista con los nuevos datos
+        _registros.value = _registros.value.map {
+            if (it == mascotaAntigua) {
+                Triple(nuevoNombre, nuevaRaza, nuevaEdad) // Cambiamos el registro
+            } else {
+                it // Mantenemos el resto igual
+            }
+        }
     }
 }

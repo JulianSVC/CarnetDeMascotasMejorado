@@ -35,11 +35,9 @@ fun Navegacion() {
             val edad = backStackEntry.arguments?.getString("edad") ?: ""
             val foto = backStackEntry.arguments?.getString("foto") ?: ""
 
-            // Aquí obtenemos el ViewModel correctamente sin necesidad de pasarlo
             val registroViewModel: RegistroViewModel = viewModel()
-
-            // Ahora pasamos el ViewModel a ScreenB
             ScreenB(nombre, correo, raza, edad, foto, navController, registroViewModel)
         }
+
     }
 }

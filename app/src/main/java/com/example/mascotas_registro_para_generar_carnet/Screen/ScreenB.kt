@@ -66,7 +66,7 @@ fun ScreenB(
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             item {
-                Image(
+                    Image(
                     painter = painterResource(id = R.drawable.log),
                     contentDescription = "Logo",
                     modifier = Modifier.size(120.dp)
