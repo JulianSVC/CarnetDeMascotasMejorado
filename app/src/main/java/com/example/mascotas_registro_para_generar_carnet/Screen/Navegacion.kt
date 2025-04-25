@@ -9,35 +9,40 @@ import androidx.navigation.navArgument
 import com.example.navegacion.viewmodel.RegistroViewModel
 import com.example.screenejemplo.Screen.ScreenB
 import androidx.lifecycle.viewmodel.compose.viewModel
-
 @Composable
 fun Navegacion() {
     val navController = rememberNavController()
 
     NavHost(navController = navController, startDestination = "screen_a") {
         composable("screen_a") {
-            // No es necesario pasar el ViewModel explícitamente aquí
             ScreenA(navController)
         }
         composable(
-            "screen_b/{nombre}/{correo}/{raza}/{edad}/{foto}",
+            "screen_b/{nombre}/{raza}/{tamaño}/{edad}/{foto}",  // Quitamos correo y añadimos tamaño
             arguments = listOf(
                 navArgument("nombre") { type = NavType.StringType },
-                navArgument("correo") { type = NavType.StringType },
                 navArgument("raza") { type = NavType.StringType },
+                navArgument("tamaño") { type = NavType.StringType },  // Nuevo parámetro
                 navArgument("edad") { type = NavType.StringType },
                 navArgument("foto") { type = NavType.StringType }
             )
         ) { backStackEntry ->
             val nombre = backStackEntry.arguments?.getString("nombre") ?: ""
-            val correo = backStackEntry.arguments?.getString("correo") ?: ""
             val raza = backStackEntry.arguments?.getString("raza") ?: ""
+            val tamaño = backStackEntry.arguments?.getString("tamaño") ?: ""  // Obtenemos tamaño
             val edad = backStackEntry.arguments?.getString("edad") ?: ""
             val foto = backStackEntry.arguments?.getString("foto") ?: ""
 
             val registroViewModel: RegistroViewModel = viewModel()
-            ScreenB(nombre, correo, raza, edad, foto, navController, registroViewModel)
+            ScreenB(
+                nombre = nombre,
+                raza = raza,
+                tamaño = tamaño,  // Pasamos tamaño en lugar de correo
+                edad = edad,
+                foto = foto,
+                navController = navController,
+                registroViewModel = registroViewModel
+            )
         }
-
     }
 }
